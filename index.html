@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+   
+</head>
+<body>
+
+<h1>Job Search App</h1>
+<hr>
+
+<div id="maincontainer">
+
+<div id="filtermenu">
+
+    
+    <li>Show All Jobs</li>
+    <button onclick="showall()">Show</button>
+    <hr>
+    <li id="one">Filter By Position</li>
+
+    <div id="slide1">
+    <input id="positionid" type="text">
+    <button onclick="filterbyposition()">Filter</button>
+    </div>
+    <hr>
+    <li id="two">Filter By City</li>
+
+    <div id="slide2">
+    <input id="inputid" type="text">
+    <button onclick="filterbycity()">Filter</button>
+    </div>
+    <hr>
+    <li id="three">Filter by Salary</li>
+
+    <div id="slide3">
+    Minimum Salary : <input id="salaryinput" type="text">
+    <button onclick="filterbysalary()">Filter</button>
+    </div>
+    <hr>
+    <li id="four">Filter by City and Salary</li>
+
+    <div id="slide4">
+    City : <input id="inputid2" type="text"><br>
+    Minimum Salary : <input id="salaryinput2" type="text">
+    <button onclick="filterbycityandsalary()">Filter</button>
+    </div>
+    <hr>
+
+    <li id="five">Filter by City and Position</li>
+
+    <div id="slide5">
+    City : <input id="inputid4" type="text"><br>
+    Position: <input id="positionid4" type="text">
+    <button onclick="filterbycityandposition()">Filter</button>
+    </div>
+
+    <hr>
+
+    <li id="six">Filter by Position and City and Salary</li>
+
+    <div id="slide6">
+    Position : <input type="text" id="positionid3"><br>
+    City : <input id="inputid3" type="text"><br>
+    Minimum Salary : <input id="salaryinput3" type="text">
+    <button onclick="filterbypositionandcityandsalary()">Filter</button>
+    </div>
+
+</ul>
+
+
+
+</div>
+
+<div id="container"></div>
+
+</div>
+
+</body>
+<script>
+    
+const jobs = [
+
+{
+    position:"Full Stack Developer",
+    city:"İstanbul",
+    salary:20000
+},
+{
+    position:"Back End Developer",
+    city:"Ordu",
+    salary:10000
+},
+{
+    position:"Front End Developer",
+    city:"Bursa",
+    salary:6000
+},
+{
+    position:"Back End Developer",
+    city:"Ankara",
+    salary:7000
+},
+{
+    position:"Front End Developer",
+    city:"İstanbul",
+    salary:5000
+},
+{
+    position:"Full Stack Developer",
+    city:"İstanbul",
+    salary:20000
+},
+{
+    position:"Front End Developer",
+    city:"Ordu",
+    salary:4000
+},
+{
+    position:"Front End Developer",
+    city:"Bursa",
+    salary:3000
+},
+{
+    position:"Back End Developer",
+    city:"Ankara",
+    salary:2000
+},
+{
+    position:"Front End Developer",
+    city:"İstanbul",
+    salary:1000
+}
+
+];
+
+for ( let i=0;i<jobs.length;i++) {
+
+const newDiv = document.createElement("div");
+newDiv.classList.add("divclass");
+document.getElementById("container").appendChild(newDiv);
+const newButton = document.createElement("button");
+document.getElementById("container").appendChild(newButton);
+newButton.classList.add("buttonclass");
+newButton.innerHTML = "Apply Job";
+newDiv.innerHTML += "Position : " + jobs[i].position +"<br>";
+newDiv.innerHTML += "City : " + jobs[i].city + "<br>";
+newDiv.innerHTML += "Salary : " + jobs[i].salary + "<br>";
+
+}
+
+function filterbyposition() {
+
+const positionvalue = document.getElementById("positionid").value;
+
+const filteredjobs = jobs.filter( job => job.position == positionvalue )
+
+document.getElementById("container").innerHTML = "";
+
+for ( let i=0;i<filteredjobs.length;i++) {
+
+
+const newDiv = document.createElement("div");
+newDiv.classList.add("divclass");
+document.getElementById("container").appendChild(newDiv);
+const newButton = document.createElement("button");
+document.getElementById("container").appendChild(newButton);
+newButton.classList.add("buttonclass");
+newButton.innerHTML = "Apply Job";
+newDiv.innerHTML += "Position : " + filteredjobs[i].position +"<br>";
+newDiv.innerHTML += "City : " + filteredjobs[i].city + "<br>";
+newDiv.innerHTML += "Salary : " + filteredjobs[i].salary + "<br>";
+
+}
+
+
+}
+
+function filterbycity() {
+
+const cityvalue = document.getElementById("inputid").value;
+
+const filteredjobs = jobs.filter( job => job.city == cityvalue )
+
+document.getElementById("container").innerHTML = "";
+
+for ( let i=0;i<filteredjobs.length;i++) {
+
+
+const newDiv = document.createElement("div");
+newDiv.classList.add("divclass");
+document.getElementById("container").appendChild(newDiv);
+const newButton = document.createElement("button");
+document.getElementById("container").appendChild(newButton);
+newButton.classList.add("buttonclass");
+newButton.innerHTML = "Apply Job";
+newDiv.innerHTML += "Position : " + filteredjobs[i].position +"<br>";
+newDiv.innerHTML += "City : " + filteredjobs[i].city + "<br>";
+newDiv.innerHTML += "Salary : " + filteredjobs[i].salary + "<br>";
+
+}
+
+
+}
+
+function filterbysalary() {
+
+const minsalary = document.getElementById("salaryinput").value;
+
+const filteredjobs = jobs.filter( job => job.salary > minsalary )
+
+document.getElementById("container").innerHTML = "";
+
+for ( let i=0;i<filteredjobs.length;i++) {
+
+
+const newDiv = document.createElement("div");
+newDiv.classList.add("divclass");
+document.getElementById("container").appendChild(newDiv);
+const newButton = document.createElement("button");
+document.getElementById("container").appendChild(newButton);
+newButton.classList.add("buttonclass");
+newButton.innerHTML = "Apply Job";
+newDiv.innerHTML += "Position : " + filteredjobs[i].position +"<br>";
+newDiv.innerHTML += "City : " + filteredjobs[i].city + "<br>";
+newDiv.innerHTML += "Salary : " + filteredjobs[i].salary + "<br>";
+
+}
+
+
+}
+
+function filterbysalary() {
+
+const minsalary = document.getElementById("salaryinput").value;
+
+const filteredjobs = jobs.filter( job => job.salary > minsalary )
+
+document.getElementById("container").innerHTML = "";
+
+for ( let i=0;i<filteredjobs.length;i++) {
+
+
+const newDiv = document.createElement("div");
+newDiv.classList.add("divclass");
+document.getElementById("container").appendChild(newDiv);
+const newButton = document.createElement("button");
+document.getElementById("container").appendChild(newButton);
+newButton.classList.add("buttonclass");
+newButton.innerHTML = "Apply Job";
+newDiv.innerHTML += "Position : " + filteredjobs[i].position +"<br>";
+newDiv.innerHTML += "City : " + filteredjobs[i].city + "<br>";
+newDiv.innerHTML += "Salary : " + filteredjobs[i].salary + "<br>";
+
+}
+
+
+}
+
+function filterbycityandsalary() {
+
+const city = document.getElementById("inputid2").value;
+const minsalary = document.getElementById("salaryinput2").value;
+
+const filteredjobs = jobs.filter( job => job.salary > minsalary && job.city == city )
+
+document.getElementById("container").innerHTML = "";
+
+for ( let i=0;i<filteredjobs.length;i++) {
+
+
+const newDiv = document.createElement("div");
+newDiv.classList.add("divclass");
+document.getElementById("container").appendChild(newDiv);
+const newButton = document.createElement("button");
+document.getElementById("container").appendChild(newButton);
+newButton.classList.add("buttonclass");
+newButton.innerHTML = "Apply Job";
+newDiv.innerHTML += "Position : " + filteredjobs[i].position +"<br>";
+newDiv.innerHTML += "City : " + filteredjobs[i].city + "<br>";
+newDiv.innerHTML += "Salary : " + filteredjobs[i].salary + "<br>";
+
+}
+
+
+}
+
+function filterbycityandposition () {
+
+const cityvalue = document.getElementById("inputid4").value;
+const positionvalue = document.getElementById("positionid4").value;
+
+const filteredjobs = jobs.filter( job => job.city == cityvalue && job.position == positionvalue )
+
+document.getElementById("container").innerHTML = "";
+
+for ( let i=0;i<filteredjobs.length;i++) {
+
+
+const newDiv = document.createElement("div");
+newDiv.classList.add("divclass");
+document.getElementById("container").appendChild(newDiv);
+const newButton = document.createElement("button");
+document.getElementById("container").appendChild(newButton);
+newButton.classList.add("buttonclass");
+newButton.innerHTML = "Apply Job";
+newDiv.innerHTML += "Position : " + filteredjobs[i].position +"<br>";
+newDiv.innerHTML += "City : " + filteredjobs[i].city + "<br>";
+newDiv.innerHTML += "Salary : " + filteredjobs[i].salary + "<br>";
+
+}
+
+
+}
+
+function filterbypositionandcityandsalary() {
+
+const position = document.getElementById("positionid3").value;
+const city = document.getElementById("inputid3").value;
+const minsalary = document.getElementById("salaryinput3").value;
+
+const filteredjobs = jobs.filter( job => job.salary > minsalary && job.city == city && job.position == position )
+
+document.getElementById("container").innerHTML = "";
+
+for ( let i=0;i<filteredjobs.length;i++) {
+
+
+const newDiv = document.createElement("div");
+newDiv.classList.add("divclass");
+document.getElementById("container").appendChild(newDiv);
+const newButton = document.createElement("button");
+document.getElementById("container").appendChild(newButton);
+newButton.classList.add("buttonclass");
+newButton.innerHTML = "Apply Job";
+newDiv.innerHTML += "Position : " + filteredjobs[i].position +"<br>";
+newDiv.innerHTML += "City : " + filteredjobs[i].city + "<br>";
+newDiv.innerHTML += "Salary : " + filteredjobs[i].salary + "<br>";
+
+}
+
+
+}
+
+function showall() {
+
+document.getElementById("container").innerHTML = "";    
+
+for ( let i=0;i<jobs.length;i++) {
+
+const newDiv = document.createElement("div");
+newDiv.classList.add("divclass");
+document.getElementById("container").appendChild(newDiv);
+const newButton = document.createElement("button");
+document.getElementById("container").appendChild(newButton);
+newButton.classList.add("buttonclass");
+newButton.innerHTML = "Apply Job";
+newDiv.innerHTML += "Position : " + jobs[i].position +"<br>";
+newDiv.innerHTML += "City : " + jobs[i].city + "<br>";
+newDiv.innerHTML += "Salary : " + jobs[i].salary + "<br>";
+
+}
+
+
+}
+
+document.getElementById("one").addEventListener("click", function() {
+document.getElementById("slide1").classList.toggle("openme");
+
+})
+
+document.getElementById("two").addEventListener("click", function() {
+document.getElementById("slide2").classList.toggle("openme");
+
+})
+
+document.getElementById("three").addEventListener("click", function() {
+document.getElementById("slide3").classList.toggle("openme");
+
+})
+
+document.getElementById("four").addEventListener("click", function() {
+document.getElementById("slide4").classList.toggle("openme");
+
+})
+
+document.getElementById("five").addEventListener("click", function() {
+document.getElementById("slide5").classList.toggle("openme");
+
+})
+
+document.getElementById("six").addEventListener("click", function() {
+document.getElementById("slide6").classList.toggle("openme");
+
+})
+
+
+
+
+</script>
+</html>
